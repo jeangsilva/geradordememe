@@ -1,4 +1,4 @@
-# My Universal React Project
+# Gerador de MEMES
 
 <p>
   <!-- iOS -->
@@ -15,7 +15,7 @@
   </a>
 </p>
 
-## 🚀 How to use
+## 🚀 Como usar
 
 - Install packages with `yarn` or `npm install`.
   - If you have native iOS code run `npx pod-install`

@@ -1,10 +1,27 @@
-import { Component } from "react";
+import React, { Component } from "react";
 import { View, Text, TextInput, Image, StyleSheet } from "react-native";
 
 export default class GeradordeMeme extends Component {
   constructor(props) {
     super(props);
-    this.state;
+    this.state = { texto1: "Texto1", texto2: "Texto2" };
+    this.escrever = this.escrever.bind(this);
+  }
+
+  mudarVogais(texto) {
+    let novoTexto = texto.toLowerCase();
+
+    novoTexto = novoTexto.replace(/(a|á|à|e|é|i|í|o|ó|u|ú)/g, "i");
+
+    return novoTexto;
+  }
+
+  escrever(t) {
+    let s = this.state;
+    s.texto1 = t;
+    s.texto2 = this.mudarVogais(t);
+
+    this.setState(s);
   }
 
   render() {
@@ -18,16 +35,21 @@ export default class GeradordeMeme extends Component {
           <TextInput
             placeholder="Digite seu mimimi"
             style={styles.input}
+            onChangeText={this.escrever}
           ></TextInput>
         </View>
 
         <View style={styles.area}>
-          <Text style={[styles.texto, styles.texto1]}></Text>
+          <Text style={[styles.texto, styles.texto1]}>
+            {this.state.texto1.toUpperCase()}
+          </Text>
           <Image
             style={styles.guri}
             source={require("./images/mimimi.jpg")}
           ></Image>
-          <Text style={[styles.texto, styles.texto2]}></Text>
+          <Text style={[styles.texto, styles.texto2]}>
+            {this.state.texto2.toUpperCase()}
+          </Text>
         </View>
       </View>
     );
